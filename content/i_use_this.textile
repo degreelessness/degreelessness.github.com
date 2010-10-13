@@ -1,0 +1,83 @@
+---
+layout: post
+title: I Use This
+styles:
+  - tablekit
+scripts:
+  - prototype
+  - tablekit
+no-comment: true
+categories:
+  code: Source Code Editing
+  document: Document Editing
+  image: Image Editing
+  messaging: Messaging
+  system: System Utility
+  textmate: TextMate Extension
+  vcs: VCS(version control system) Binaries
+  vcsgui: VCS(version control system) GUI
+  web: Web Browser
+---
+
+table(sortable).
+|_.Tool |_.Function |_.Platform |
+| "XCode":http://developer.apple.com/tools/xcode/
+  | {{ page.categories.code }} | OS X |
+| "TextMate":http://macromates.com/
+  | {{ page.categories.code }} | OS X |
+| "Open in TextMate":http://henrik.nyh.se/2007/10/open-in-textmate-from-leopard-finder
+  | {{ page.categories.textmate }} | OS X |
+| "Missing Drawer":http://github.com/jezdez/textmate-missingdrawer
+  | {{ page.categories.textmate }} | OS X |
+| "GetBundles":http://svn.textmate.org/trunk/Review/Bundles/GetBundles.tmbundle/
+  | {{ page.categories.textmate }} | OS X |
+| "0xED":http://www.suavetech.com/0xed/0xed.html
+  | {{ page.categories.code }} | OS X |
+| "IntelliJ IDEA":http://www.jetbrains.com/idea/
+  | {{ page.categories.code }} | Cross-Platform |
+| ["PDE(Processing Development Environment)":http://processing.org/]/["SPDE(Scala Processing Development Environment)":http://technically.us/spde/About]
+  | {{ page.categories.code }} | Cross-Platform |
+| "MiniBuilder":http://code.google.com/p/minibuilder/
+  | {{ page.categories.code }} | AIR |
+| "RegExr":http://www.gskinner.com/RegExr/desktop/
+  | {{ page.categories.code }} | AIR |
+| "Acorn":http://flyingmeat.com/acorn/
+  | {{ page.categories.image }} | OS X |
+| "Paintbrush":http://paintbrush.sourceforge.net/
+  | {{ page.categories.image }} | OS X |
+| "Painter's Picker":http://www.old-jewel.com/ppicker/
+  | {{ page.categories.image }} | OS X |
+| "Dwarf":http://destroytoday.com/blog/2010/02/dwarf-adds-unit-types-and-tool-position-to-its-arsenal/
+  | {{ page.categories.image }} | AIR |
+| "iWork":http://www.apple.com/iwork/
+  | {{ page.categories.document }} | OS X |
+| "Git Installer":http://code.google.com/p/git-osx-installer/
+  | {{ page.categories.vcs }} | OS X |
+| "GitX":http://gitx.frim.nl/
+  | {{ page.categories.vcsgui }} | OS X |
+| "Gity":http://codeendeavor.com/
+  | {{ page.categories.vcsgui }} | OS X |
+| "Mercurial Installer":http://mercurial.berkwood.com/
+  | {{ page.categories.vcs }} | OS X |
+| "Murky":http://bitbucket.org/snej/murky
+  | {{ page.categories.vcsgui }} | OS X |
+| "JavaHL Installer":http://downloads.open.collab.net/binaries.html
+  | {{ page.categories.vcs }} | OS X |
+| "CornerStone":http://www.zennaware.com/cornerstone/
+  | {{ page.categories.vcsgui }} | OS X |
+| "ForkLift":http://www.binarynights.com/forklift
+  | {{ page.categories.system }} | OS X |
+| "Mail RSS Exporter":http://www.achingbrain.net/stuff/cocoa/applications/mail-rss-exporter
+  | {{ page.categories.system }} | OS X |
+| "MercuryMover":http://www.heliumfoot.com/mercurymover/
+  | {{ page.categories.system }} | OS X |
+| "MacCleanse":http://www.koingosw.com/products/maccleanse.php
+  | {{ page.categories.system }} | OS X |
+| "OpenDNS Updater":http://www.opendns.com/support/dynamic_ip_downloads/
+  | {{ page.categories.system }} | Cross-Platform |
+| "Gabble":http://www.gabbleapp.com/
+  | {{ page.categories.messaging }} | OS X |
+| "Skype":http://www.skype.com/
+  | {{ page.categories.messaging }} | Cross-Platform |
+| "Firefox":http://www.firefox.com/
+  | {{ page.categories.web }} | Cross-Platform |

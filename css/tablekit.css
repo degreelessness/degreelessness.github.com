@@ -1,0 +1,58 @@
+table.tablekit {
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+table.tablekit td, table.tablekit th {
+	padding: 0.5em;
+	border: 1px solid #CCC;
+}
+
+table.tablekit thead, table.tablekit tfoot {
+	background-color: #DDD;
+}
+
+table.tablekit tr.rowodd {
+	background-color: #FFF;
+}
+
+table.tablekit tr.roweven {
+	background-color: #F2F2F2;
+}
+
+table.tablekit .sortasc {
+	background-color: #DDFFAC;
+}
+
+table.tablekit .sortdesc {
+	background-color: #B9DDFF;
+}
+
+.sortcol {
+	cursor: pointer;
+	padding-right: 20px;
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+.sortasc {
+	background-image: url(../images/tablekit/up.gif);
+}
+.sortdesc {
+	background-image: url(../images/tablekit/down.gif);
+}
+.nosort {
+	cursor: default;
+}
+
+th.resize-handle-active {
+	cursor: e-resize;
+}
+
+div.resize-handle {
+	cursor: e-resize;
+	width: 2px;
+	border-right: 1px dashed #1E90FF;
+	position:absolute;
+	top:0;
+	left:0;
+}

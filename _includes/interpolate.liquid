@@ -1,0 +1,13 @@
+{% unless string_in contains "%" %}{{ string_in }}{% else %}{% capture string_in %}
+  {% for tuple in hash_on %}
+    {% capture string_in %}
+      {% capture tuple0 %}%[{{ tuple[0] }}]{% endcapture %}
+      {% if string_in contains tuple0 %}
+        {{ string_in | replace:tuple0,tuple[1] }}
+      {% else %}
+        {{ string_in }}
+      {% endif %}
+    {% endcapture %}
+    {% if forloop.last %}{{ string_in }}{% endif %}
+  {% endfor %}
+{% endcapture %}{{ string_in | strip_newlines | remove: "  " }}{% endunless %}

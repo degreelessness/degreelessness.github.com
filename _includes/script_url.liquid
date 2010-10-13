@@ -1,0 +1,9 @@
+{% assign string_in = site.location.js.cdn[asset] %}
+{% capture asset %}
+  {% if string_in %}
+    {% assign hash_on = site.location.js.cdn %}
+    {% include interpolate.liquid %}
+  {% else %}
+    {{ site.location.path }}{{ site.location.js.path }}/{{ asset }}.js
+  {% endif %}
+{% endcapture %}{{ asset | strip_newlines | remove: "  " }}

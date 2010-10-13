@@ -1,0 +1,66 @@
+---
+layout: nil
+---
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.user.title }}{% endif %} -- {{ site.user.name }}</title>
+   <meta name="author" content="{{ site.user.name }}" />
+   <link href="{{ site.location.path }}{{ site.location.feed }}" rel="alternate" title="{{ site.user.title }} -- {{ site.user.name }}" type="application/atom+xml" />
+
+  {% for asset in site.location.css.links %}
+    <link rel="stylesheet" href="{{ site.location.path }}{{ site.location.css.path }}/{{ asset }}.css" type="text/css" />
+  {% endfor %}
+  {% for asset in page.styles %}
+    <link rel="stylesheet" href="{{ site.location.path }}{{ site.location.css.path }}/{{ asset }}.css" type="text/css" />
+  {% endfor %}
+
+  {% for asset in site.assets.scripts %}
+    <script type="text/javascript" src="{% include script_url.liquid %}"></script>
+  {% endfor %}
+  {% for asset in page.scripts %}
+    <script type="text/javascript" src="{% include script_url.liquid %}"></script>
+  {% endfor %}
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="{{ site.location.path }}/">{{ site.user.name }}</a>
+    <a class="extra" href="{{ site.location.path }}/">{{ site.user.title }}</a>
+  </div>
+
+  {{ content }}
+  
+  <div class="footer">
+    {% assign hash_on = site.user %}
+    {% for link in site.user.links %}
+      {% if forloop.first or new_column %}<div class="contact"><p>{% endif %}
+      {% if link.title == "%[BR]" %}
+        {% assign new_column = true %}
+      {% else %}
+        {% unless forloop.first or new_column %}<br />{% endunless %}
+        {% assign new_column = false %}
+        {% if link.url %}{% assign string_in = link.url %}<a href="{% include interpolate.liquid %}">{% endif %}
+        {% assign string_in = link.title %}{% include interpolate.liquid %}
+        {% if link.url %}</a>{% endif %}
+      {% endif %}
+      {% if forloop.last or new_column %}</p></div>{% endif %}
+    {% endfor %}
+    <div class="rss">
+      <a href="{{ site.location.path }}{{ site.location.feed }}">
+        <img src="{{ site.location.path }}{{ site.location.images }}/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+{% if site.user.github %}
+  <a href="http://github.com/{{ site.user.github }}"><img style="position: fixed; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
+{% endif %}
+
+</body>
+</html>

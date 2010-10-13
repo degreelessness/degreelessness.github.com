@@ -1,0 +1,70 @@
+---
+layout: post
+---
+[pathtools]http://code.google.com/p/pathtools/
+[egit]http://www.vogella.de/articles/EGit/article.html
+[gitx]http://gitx.frim.nl/seeit.html
+[opengit]http://code.google.com/p/git-osx-installer/wiki/OpenInGitGui
+[intellij]http://www.jetbrains.com/idea/documentation/migration_faq.html
+[macvspc]http://www.youtube.com/watch?v=o7_C0hn8F5M
+[gity]http://queencodemonkey.com/2009/12/10/gitx-gity-gitxy-gity-x-a-good-git-gui/
+[pullrebase]http://www.gitready.com/advanced/2009/02/11/pull-with-rebase.html
+[ghpages]http://github.com/blog/272-github-pages
+[textmate]http://manual.macromates.com/en/using_textmate_from_terminal.html#git_editor
+[filemerge]http://gitguru.com/2009/02/22/integrating-git-with-a-visual-merge-tool/
+
+Eclipse and Git predominate my development workflow[1]. Since I terminally prefer GUI to command line I'll share a couple Eclipse "Path Tools":pathtools customizations for Git.
+
+Despite Eclipse's official "Git Team Provider":egit I solely exploit its label decorations. My Git client of choice is "GitX":gitx. To open any Eclipse project in GitX[2] straight from Package or Project Explorer add the following _Custom Folder command_:
+
+bc(terminal). open -a "/Applications/GitX.app" "{path}"
+
+@git-gui@ exposes the vast remainder of Git's magic[3] which I often drop into especially for its @gitk@ integration[4]. Its magic entails its own incantation however. I started by adapting an AppleScript from "OpenInGitGui":opengit:
+
+{% highlight applescript %}
+on run argv
+    set cdTo to item 1 of argv
+    do shell script "screen -dmS git-gui-pathtool bash -c 'cd " & cdTo & "; /usr/local/git/bin/git gui'"
+    do shell script "/bin/sleep 0.25"
+    tell application "Git Gui"
+        activate
+    end tell
+end run
+{% endhighlight %}
+
+If you save it as @gitgui.scpt@ in Eclipse's @plugins@ folder your final _Custom Folder command_ will be:
+
+bc(terminal). osascript "/Applications/eclipse/plugins/gitgui.scpt" "{path}"
+
+Since both tools find repositories in ancestor folders you can also include the following _Custom File commands_:
+
+bc(terminal). open -a "/Applications/GitX.app" "{parent-path}"
+
+bc(terminal). osascript "/Applications/eclipse/plugins/gitgui.scpt" "{parent-path}"
+
+fn1. I converted to "IntelliJ Ultimate":intellij soon after this writing.
+
+fn2. Sorry "PC":macvspc ;)
+
+fn3. "Gity":gity bundles gems missing from both tools in Cocoa like:
+
+* Smart @git-config@ editor
+* @git-pull@ with "@--rebase@":pullrebase
+* @git-stash@ and @git-submodule@ management
+* _New Empty Branch_ %{text-transform:lowercase}EG(exempli gratia)% "@gh-pages@":ghpages
+* Out-of-box "TextMate":textmate and "Xcode FileMerge":filemerge integration
+
+fn4. For further GUI integration merge your @git-config@ with:
+
+{% highlight cfg %}
+[core]
+    ; Assuming TextMate binary in PATH.
+    editor = mate -wl1
+[merge]
+    tool = opendiff
+[mergetool "opendiff"]
+    ; Assuming Xcode binaries NOT in PATH.
+    path = /Developer/usr/bin/opendiff
+    trustExitCode = true
+    keepBackup = false
+{% endhighlight %}

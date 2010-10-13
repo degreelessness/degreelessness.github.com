@@ -1,0 +1,41 @@
+---
+layout: default
+---
+{% if page.no-comment == true or site.user.disqus == nil %}{% assign no_comment = true %}
+{% else %}{% assign no_comment = false %}{% endif %}
+{% if page.id %}{% assign disqus_id = page.id %}
+{% else %}{% assign disqus_id = page.url %}{% endif %}
+
+<div id="post">
+  {% unless no_comment %}
+    <div class="dsq-brlink"><a href="{{ site.location.path }}{{ page.url }}#disqus_thread">Comments</a> </div>
+  {% endunless %}
+  <h1>{{ page.title }}</h1>
+  {% if page.date %}
+    <p class="meta">{{ page.date | date_to_string }}</p>
+  {% endif %}
+
+  {{ content }}
+</div>
+
+{% for post in site.related_posts limit:3 %}
+  {% if forloop.first %}
+    <div id="related">
+      <h2>Related Posts</h2>
+      <ul class="posts">
+  {% endif %}
+  <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.location.path }}{{ post.url }}">{{ post.title }}</a></li>
+  {% if forloop.last %}
+      </ul>
+    </div>
+  {% endif %}
+{% endfor %}
+
+{% unless no_comment %}
+  <div id="disqus_thread" class="footer">
+    <noscript class="dsq-brlink">Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={{ site.user.disqus }}">comments powered by <span class="logo-disqus">Disqus</span>.</a></noscript>
+  </div>
+  <script type="text/javascript">var disqus_identifier = "{{ disqus_id }}";</script>
+  <script type="text/javascript" async src="http://{{ site.user.disqus }}.disqus.com/embed.js"></script>
+  <script type="text/javascript" async src="http://disqus.com/forums/{{ site.user.disqus }}/count.js"></script>
+{% endunless %}

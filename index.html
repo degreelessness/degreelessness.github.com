@@ -1,6 +1,31 @@
-<html>
-<head></head>
-<body>
-<h1>Hello, world!</h1>
-</body>
-</html>
+---
+layout: default
+---
+
+<div id="home">
+  {% if site.index.header %}
+    <h1>{{ site.index.header }}</h1>
+  {% endif %}
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.location.path }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  {% for list in site.index.lists %}
+    {% if list.header %}
+      <h1>{{ list.header }}</h1>
+    {% endif %}
+    {% for post in list.links %}
+      {% if forloop.first %}<ul class="posts">{% endif %}
+      <li>
+        {% if post.subtitle %}<span>{{ post.title }}</span> &raquo; {% endif %}
+        {% if post.url %}<a href="{{ post.url }}">{% endif %}
+          {% if post.subtitle %}{{ post.subtitle }}{% else %}{{ post.title }}{% endif %}
+        {% if post.url %}</a>{% endif %}
+      </li>
+      {% if forloop.last %}</ul>{% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>
+  

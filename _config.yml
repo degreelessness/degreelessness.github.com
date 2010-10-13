@@ -1,0 +1,61 @@
+markdown: rdiscount
+pygments: true
+location:
+  cname: http://degreelessness.com
+  path:
+  feed: /atom.xml
+  images: /images
+  css:
+    path: /css
+    links:
+      - screen
+      - syntax
+  js:
+    path: /js
+    cdn:
+      prototype: http://ajax.googleapis.com/ajax/libs/prototype/1/prototype.js
+      scriptaculous: http://ajax.googleapis.com/ajax/libs/scriptaculous/1/scriptaculous.js
+      effects: %[scriptaculous]?load=effects
+user:
+  title: Blog
+  name: degreelessness
+  email: mr.degreeless at gmail dot com
+# Optional below this line.
+  github: degreelessness
+  disqus: degreelessness
+  domain: http://degreelessness.com # User-defined variable.
+  links:
+    - title: <img src="%[domain]/Assets/caricature.png" alt="MadMenYourself.com"/>
+    - title: %[BR]
+    - title: %[name]
+    - title: %[email]
+      url: mailto:%[email]
+    - title: %[BR]
+    - title: blogroll.html
+      url: %[domain]/feeds.html
+    - title: blogroll.opml
+      url: %[domain]/feeds.opml
+index:
+  header: Word
+  lists:
+    - header: Code
+      links:
+      - title: Scala Collections API
+        subtitle: Consilidated fork of charts for PDF download
+        url: http://blog.dnalot.com/scala-collections-charts/
+      - title: Jekyll Template
+        subtitle: Configurable fork of TPW
+        url: http://github.com/dnalot/dnalot.github.com/tree/mojombo
+      - title: Coming Soon
+        subtitle: Scala, Android, Processing, Flash
+    - header: Self
+      links:
+#      - title: I Know This
+#        subtitle: Professional acronyms
+#        url: content/i_know_this.html
+#      - title: I Read This
+#        subtitle: Professional books
+#        url: content/i_read_this.html
+      - title: I Use This
+        subtitle: Professional tools
+        url: content/i_use_this.html

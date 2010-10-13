@@ -1,0 +1,28 @@
+---
+layout: post
+---
+[standardtacks]http://stackoverflow.com/questions/135688/setting-environment-variables-in-os-x
+[intellijmaven]http://www.digitaledgesw.com/node/31
+[launchctl]http://ss64.com/osx/launchctl.html
+[launchdsyntax]http://stackoverflow.com/questions/2519292/setenv-variable-with-spaces-in-launchd-conf
+
+Since converting to Snow Leopard when Windows 7 was released my biggest discombobulation has been modifying @PATH@ and other environment variables like @M2_HOME@. There are literally a dozen "standard tacks":standardtacks to execute this onus none of which afford chic Cocoa GUI. 
+
+Popular techniques include:
+* @~/.profile@
+* @~/.bash_profile@
+* @~/.bashrc@ (also @~/.{SHELL}rc@ %{text-transform:lowercase}EG(exempli gratia)% @tcsh@)
+* @~/.launchd.conf@
+* @~/.MacOSX/environment.plist@
+* @/etc/profile@ (system variant)
+* @/etc/bashrc@ (shell dependent system variant)
+* @/etc/launchd.conf@ (requires reboot)
+* @/etc/paths@
+* @/etc/paths.d/.*@
+
+AFAIK(as far as I know) only @/etc/launchd.conf@ works consistently between both Terminal sessions and GUI applications like "Maven in IntelliJ":intellijmaven. It delegates to "@launchctl@":launchctl subcommands "reminiscent of C shell":launchdsyntax:
+
+{% highlight csh %}
+setenv PATH /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+setenv M2_HOME /usr/share/maven # Included with XCode.
+{% endhighlight %}
